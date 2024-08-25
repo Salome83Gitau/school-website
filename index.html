@@ -10,16 +10,18 @@
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <img src="school-logo.png" alt="School Logo" class="logo">
+                <img src="placeholder-logo.png" alt="School Logo" class="logo">
                 <span class="school-name">School Name</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about-us">About Us</a></li>
-                <li><a href="#school-life">School Life</a></li>
-                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#curriculum">Curriculum</a></li>
+                <li><a href="#values">Core Values</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#virtual-tour">Virtual Tour</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact-us" class="contact-us-btn">Contact Us</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contacts" class="contact-us-btn">Contact Us</a></li>
             </ul>
             <a href="#book-tour" class="book-tour-btn">Book a Tour</a>
             <div class="burger">
@@ -29,6 +31,112 @@
             </div>
         </nav>
     </header>
+
+    <section id="home" class="home">
+        <div class="slideshow">
+            <div class="slides">
+                <img src="placeholder-slide1.jpg" alt="School Image 1">
+                <img src="placeholder-slide2.jpg" alt="School Image 2">
+                <img src="placeholder-slide3.jpg" alt="School Image 3">
+            </div>
+            <div class="motto">Empowering Future Leaders</div>
+        </div>
+    </section>
+
+    <section id="curriculum" class="curriculum">
+        <h2>Our Curriculum</h2>
+        <p>Discover our Comprehensive CBC Curriculum.</p>
+    </section>
+
+    <section id="values" class="values">
+        <h2>Our Core Values</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="placeholder-sports.jpg" alt="Sports">
+                <h3>Sports and Talent</h3>
+                <p>Fostering Athletic and Artistic Skills.</p>
+                <a href="#more-sports" class="view-more">View More</a>
+            </div>
+            <div class="card">
+                <img src="placeholder-spiritual.jpg" alt="Spiritual Well-being">
+                <h3>Spiritual Well-being</h3>
+                <p>Promoting Spiritual Growth and Reflection.</p>
+                <a href="#more-spiritual" class="view-more">View More</a>
+            </div>
+            <div class="card">
+                <img src="placeholder-arts.jpg" alt="Performing Arts">
+                <h3>Performing Arts</h3>
+                <p>Encouraging Artistic Expression.</p>
+                <a href="#more-arts" class="view-more">View More</a>
+            </div>
+            <div class="card">
+                <img src="placeholder-digital.jpg" alt="Digital Literacy">
+                <h3>Digital Literacy</h3>
+                <p>Equipping Students with Digital Skills.</p>
+                <a href="#more-digital" class="view-more">View More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Learn more about our school and our mission.</p>
+    </section>
+
+    <section id="virtual-tour" class="virtual-tour">
+        <h2>Virtual Tour</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/placeholder-video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-buttons">
+            <a href="#photos" class="photos-btn">Photos</a>
+            <a href="#videos" class="videos-btn">Videos</a>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <h2>Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_CODE" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <section id="contacts" class="contacts">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us through the following channels.</p>
+        <div class="social-icons">
+            <a href="https://facebook.com/your-school" class="social-icon facebook" target="_blank">Facebook</a>
+            <a href="https://twitter.com/your-school" class="social-icon twitter" target="_blank">Twitter</a>
+            <a href="https://instagram.com/your-school" class="social-icon instagram" target="_blank">Instagram</a>
+        </div>
+    </section>
+
+    <div id="book-tour-popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Book a Tour</h2>
+            <form id="book-tour-form">
+                <!-- Form fields here -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 School Name. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
