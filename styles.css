@@ -10,6 +10,7 @@ body {
     background-color: var(--background-color);
     color: var(--white);
     font-size: 16px;
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 :root {
@@ -73,7 +74,7 @@ header {
 
 .nav-links a:hover {
     color: var(--yellow);
-    transform: translateY(-3px);
+    transform: scale(1.1);
 }
 
 /* Navbar Buttons */
@@ -85,12 +86,13 @@ header {
     text-decoration: none;
     border-radius: 15px;
     font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .book-tour-btn:hover, .contact-us-btn:hover {
     background-color: var(--navy-blue);
     color: var(--yellow);
+    transform: scale(1.05);
 }
 
 .burger {
@@ -123,6 +125,7 @@ header {
     width: 100%;
     height: 100vh;
     object-fit: cover;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .motto {
@@ -132,6 +135,7 @@ header {
     font-size: 2rem;
     color: var(--white);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    animation: slideUp 2s ease-in-out;
 }
 
 /* Section Styling */
@@ -147,6 +151,7 @@ section {
     padding: 60px 20px;
 }
 
+/* Core Values Cards */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -160,20 +165,32 @@ section {
     overflow: hidden;
     width: calc(50% - 20px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: opacity 0.3s ease;
 }
 
 .card h3 {
     margin: 10px;
+    font-size: 1.2rem;
 }
 
 .card p {
     margin: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover img {
+    opacity: 0.8;
 }
 
 .view-more {
@@ -193,8 +210,10 @@ section {
 .video-container iframe {
     width: 100%;
     height: 500px;
+    border: none;
 }
 
+/* Gallery Buttons */
 .gallery-buttons {
     display: flex;
     gap: 20px;
@@ -210,12 +229,13 @@ section {
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .gallery-buttons a:hover {
     background-color: var(--navy-blue);
     color: var(--yellow);
+    transform: scale(1.05);
 }
 
 /* Footer Styling */
@@ -288,6 +308,7 @@ section {
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .popup-content button:hover {
@@ -308,4 +329,15 @@ section {
 .social-icons a:hover {
     transform: scale(1.2);
     color: var(--yellow);
+}
+
+/* Scroll Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
