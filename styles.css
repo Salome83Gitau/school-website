@@ -1,3 +1,4 @@
+/* General Reset and Body Styling */
 * {
     margin: 0;
     padding: 0;
@@ -6,13 +7,24 @@
 }
 
 body {
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
 }
 
+/* Define CSS Variables */
+:root {
+    --navy-blue: #001f3f; /* Main color */
+    --yellow: #ffcc00; /* Accent color */
+    --white: #ffffff; /* Background and text color */
+    --background-color: #f4f4f4; /* Page background color */
+    --gradient-start: #ffcc00; /* Gradient start color */
+    --gradient-end: #ff6600; /* Gradient end color */
+}
+
+/* Header and Navbar Styling */
 header {
     width: 100%;
-    background-color: navy;
-    color: white;
+    background-color: var(--navy-blue);
+    color: var(--white);
     padding: 10px 0;
 }
 
@@ -36,7 +48,7 @@ header {
 .school-name {
     font-size: 1.5rem;
     font-weight: bold;
-    color: yellow;
+    color: var(--yellow);
 }
 
 .nav-links {
@@ -47,24 +59,67 @@ header {
 
 .nav-links li {
     margin: 0 15px;
+    position: relative; /* Needed for the pseudo-elements */
 }
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: var(--white);
     font-size: 1rem;
-    transition: color 0.3s ease;
+    position: relative;
+    padding: 10px 0; /* Padding for the underline effect */
+    overflow: hidden; /* Ensures pseudo-elements stay within bounds */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    font-weight: bold;
+    display: inline-block; /* To support scaling effect */
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end)); /* Gradient underline */
+    transform: scaleX(0); /* Initial scale */
+    transform-origin: bottom right; /* Animation origin */
+    transition: transform 0.3s ease; /* Animation effect */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Positioning for the animated bar */
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: var(--yellow); /* Highlight color */
+    transition: width 0.3s ease, left 0.3s ease; /* Bar expansion and movement */
+    transform: translateX(-50%);
 }
 
 .nav-links a:hover {
-    color: yellow;
+    color: var(--yellow); /* Change text color */
+    transform: scale(1.1); /* Slight scale effect */
 }
 
+.nav-links a:hover::before {
+    transform: scaleX(1); /* Line expands */
+    transform-origin: bottom left; /* Animation origin */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Expand the bar */
+    left: 0; /* Move the bar to cover the text */
+}
+
+/* Book a Tour and Contact Us Buttons */
 .book-tour-btn, .contact-us-btn {
     padding: 10px 20px;
-    border: 2px solid yellow;
-    background-color: yellow;
-    color: navy;
+    border: 2px solid var(--yellow);
+    background-color: var(--yellow);
+    color: var(--navy-blue);
     text-decoration: none;
     border-radius: 20px;
     font-weight: bold;
@@ -72,10 +127,27 @@ header {
 }
 
 .book-tour-btn:hover, .contact-us-btn:hover {
-    background-color: white;
-    color: navy;
+    background-color: var(--white);
+    color: var(--navy-blue);
 }
 
+/* Responsive Book a Tour Button Adjustments */
+@media screen and (max-width: 768px) {
+    .book-tour-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .book-tour-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: 15px;
+    }
+}
+
+/* Burger Menu Styling for Mobile */
 .burger {
     display: none;
     cursor: pointer;
@@ -84,18 +156,19 @@ header {
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: var(--white);
     margin: 5px;
     transition: all 0.3s ease;
 }
 
+/* Responsive Navbar Adjustments */
 @media screen and (max-width: 768px) {
     .nav-links {
         position: absolute;
         right: 0;
         height: 100vh;
         top: 60px;
-        background-color: navy;
+        background-color: var(--navy-blue);
         display: flex;
         flex-direction: column;
         align-items: center;
