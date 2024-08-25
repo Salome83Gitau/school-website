@@ -69,7 +69,7 @@ header {
     text-decoration: none;
     color: var(--white);
     font-size: 0.9rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease, padding 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -89,12 +89,42 @@ header {
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.book-tour-btn:hover, .contact-us-btn:hover {
-    background-color: var(--navy-blue);
-    color: var(--yellow);
-    transform: scale(1.05);
+.book-tour-btn:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: scale(1.1);
 }
 
+.contact-us-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--white);
+}
+
+.contact-us-btn:hover {
+    /* No hover effect for Contact Us button */
+}
+
+/* Buttons in Gallery and Other Sections */
+.gallery-buttons a, .video-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--yellow);
+    background-color: var(--yellow);
+    color: var(--navy-blue);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-buttons a:hover, .video-buttons a:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: scale(1.1);
+}
+
+/* Burger Menu */
 .burger {
     display: none;
     flex-direction: column;
@@ -211,31 +241,6 @@ section {
     width: 100%;
     height: 500px;
     border: none;
-}
-
-/* Gallery Buttons */
-.gallery-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.gallery-buttons a {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid var(--yellow);
-    background-color: var(--yellow);
-    color: var(--navy-blue);
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-
-.gallery-buttons a:hover {
-    background-color: var(--navy-blue);
-    color: var(--yellow);
-    transform: scale(1.05);
 }
 
 /* Footer Styling */
