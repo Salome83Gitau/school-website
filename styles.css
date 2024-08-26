@@ -106,6 +106,11 @@ header {
 }
 
 /* Buttons in Gallery and Other Sections */
+.gallery-buttons, .video-buttons {
+    text-align: center; /* Center-align buttons within the container */
+    margin-top: 20px;   /* Add some spacing from the top */
+}
+
 .gallery-buttons a, .video-buttons a {
     display: inline-block;
     padding: 10px 20px;
@@ -116,6 +121,7 @@ header {
     border-radius: 10px;
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    margin: 0 10px; /* Add spacing between buttons */
 }
 
 .gallery-buttons a:hover, .video-buttons a:hover {
@@ -147,25 +153,78 @@ header {
 }
 
 .slides {
-    display: flex;
-    transition: transform 1s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
 .slides img {
+    position: absolute;
     width: 100%;
     height: 100vh;
     object-fit: cover;
-    animation: fadeIn 2s ease-in-out;
+    opacity: 0;
+    animation: fadeInOut 18s infinite;
 }
 
+/* Keyframes for Slideshow */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Image Timing */
+.slides img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slides img:nth-child(2) {
+    animation-delay: 6s;
+}
+
+.slides img:nth-child(3) {
+    animation-delay: 12s;
+}
+
+/* Motto Styling */
 .motto {
     position: absolute;
-    bottom: 20%;
-    left: 10%;
-    font-size: 2rem;
-    color: var(--white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    animation: slideUp 2s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--yellow);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    animation: mottoAnimation 10s infinite;
+}
+
+/* Unique Motto Animation */
+@keyframes mottoAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1) rotate(-5deg);
+        opacity: 1;
+    }
+    75% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 0;
+    }
 }
 
 /* Section Styling */
@@ -285,64 +344,29 @@ section {
     cursor: pointer;
 }
 
-.popup-content h2 {
-    margin-bottom: 20px;
-}
-
 .popup-content form {
     display: flex;
     flex-direction: column;
 }
 
-.popup-content label {
-    margin-bottom: 5px;
-}
-
-.popup-content input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid var(--navy-blue);
-    border-radius: 5px;
-}
-
-.popup-content button {
-    padding: 10px;
-    border: none;
-    background-color: var(--yellow);
-    color: var(--navy-blue);
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.popup-content button:hover {
-    background-color: var(--navy-blue);
-    color: var(--yellow);
+.popup-content input, .popup-content select, .popup-content button {
+    margin: 10px 0;
 }
 
 /* Social Icons Styling */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 .social-icons a {
-    display: inline-block;
-    margin: 0 10px;
     color: var(--white);
-    text-decoration: none;
     font-size: 24px;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons a:hover {
-    transform: scale(1.2);
     color: var(--yellow);
-}
-
-/* Scroll Animation Keyframes */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    transform: scale(1.1);
 }
