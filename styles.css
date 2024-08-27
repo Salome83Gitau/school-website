@@ -55,6 +55,18 @@ header {
     color: var(--yellow);
 }
 
+/* Define color variables for easier customization */
+:root {
+    --white: #ffffff;
+    --yellow: #ffcc00;
+}
+/* Define color variables for easier customization */
+:root {
+    --white: #ffffff;
+    --yellow: #ffcc00;
+}
+
+/* Navbar links */
 .nav-links {
     list-style: none;
     display: flex;
@@ -63,19 +75,44 @@ header {
 
 .nav-links li {
     margin: 0 10px;
+    position: relative; /* Needed for the underline effect */
 }
 
+/* Navbar link styling */
 .nav-links a {
     text-decoration: none;
     color: var(--white);
     font-size: 0.9rem;
-    transition: color 0.3s ease, transform 0.3s ease, padding 0.3s ease;
+    position: relative;
+    padding-bottom: 5px; /* Space for the underline */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* Underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect */
 .nav-links a:hover {
     color: var(--yellow);
-    transform: scale(1.1);
+    transform: scale(1.1); /* Ensures the scale effect is applied */
 }
+
+.nav-links a:hover::after {
+    transform: scaleX(1); /* Expands the underline effect */
+    transform-origin: bottom left;
+}
+
 
 /* Navbar Buttons */
 .book-tour-btn, .contact-us-btn {
@@ -104,7 +141,6 @@ header {
 .contact-us-btn:hover {
     /* No hover effect for Contact Us button */
 }
-
 /* Buttons in Gallery and Other Sections */
 .gallery-buttons, .video-buttons {
     text-align: center; /* Center-align buttons within the container */
@@ -120,15 +156,24 @@ header {
     text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     margin: 0 10px; /* Add spacing between buttons */
+    position: relative; /* Required for the box-shadow push effect */
 }
 
-.gallery-buttons a:hover, .video-buttons a:hover {
+.gallery-buttons a:hover, .video-buttons a:hover  {
     background-color: var(--white);
     color: var(--navy-blue);
-    transform: scale(1.1);
+    transform: translateY(4px); /* Simulate the push effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to enhance the effect */
 }
+
+/* Optional: Button Active State for More Realistic Push Effect */
+.gallery-buttons a:active, .video-buttons a:active {
+    transform: translateY(2px); /* Slightly more push effect when clicked */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow for the active state */
+}
+
 
 /* Burger Menu */
 .burger {
@@ -188,7 +233,6 @@ header {
 .slides img:nth-child(3) {
     animation-delay: 12s;
 }
-
 /* Motto Styling */
 .motto {
     position: absolute;
@@ -200,32 +244,37 @@ header {
     font-weight: bold;
     text-align: center;
     white-space: nowrap;
-    animation: mottoAnimation 10s infinite;
+    animation: mottoAnimation 12s ease-in-out infinite;
 }
 
-/* Unique Motto Animation */
+/* Improved Motto Animation */
 @keyframes mottoAnimation {
     0% {
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(0.8) rotate(-10deg);
         opacity: 0;
     }
-    25% {
-        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+    20% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
         opacity: 1;
     }
-    50% {
-        transform: translate(-50%, -50%) scale(1) rotate(-5deg);
+    40% {
+        transform: translate(-50%, -50%) scale(1) rotate(10deg);
         opacity: 1;
     }
-    75% {
-        transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
+    60% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(1) rotate(-10deg);
         opacity: 1;
     }
     100% {
-        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
         opacity: 0;
     }
 }
+
 
 /* Section Styling */
 section {
@@ -238,23 +287,25 @@ section {
     background-color: var(--white);
     color: var(--navy-blue);
     padding: 60px 20px;
-}
-
-/* Core Values Cards */
+}/* Core Values Cards */
 .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center; /* Center cards within container */
 }
 
 .card {
-    background-color: var(--white);
-    border: 1px solid var(--navy-blue);
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2); /* Glassmorphism background */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphism border */
+    border-radius: 15px; /* Rounded corners */
     overflow: hidden;
-    width: calc(50% - 20px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: calc(33.333% - 20px); /* Responsive card width */
+    max-width: 350px; /* Max width for larger screens */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     position: relative;
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Default shadow */
 }
 
 .card img {
@@ -265,22 +316,46 @@ section {
 }
 
 .card h3 {
-    margin: 10px;
-    font-size: 1.2rem;
+    margin: 15px;
+    font-size: 1.4rem; /* Larger font size */
 }
 
 .card p {
-    margin: 10px;
+    margin: 0 15px 15px;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7); /* Slightly lighter text color */
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05) rotate(2deg); /* Scaling and tilt effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    filter: brightness(1.1); /* Border shine effect */
 }
 
 .card:hover img {
     opacity: 0.8;
 }
+
+/* Adding a border shine effect */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px; /* Match rounded corners */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+    transform: scale(0);
+    pointer-events: none; /* Ensures it doesn’t block interactions */
+}
+
+.card:hover::before {
+    transform: scale(1);
+}
+
+
 
 .view-more {
     display: block;
@@ -369,4 +444,37 @@ section {
 .social-icons a:hover {
     color: var(--yellow);
     transform: scale(1.1);
+
+    /* Styling for the Counter Section */
+.counters {
+    background-color: #f4f4f4;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.counter-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 150px;
+}
+
+.counter {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.counter-box p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
 }
