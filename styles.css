@@ -55,17 +55,6 @@ header {
     color: var(--yellow);
 }
 
-/* Define color variables for easier customization */
-:root {
-    --white: #ffffff;
-    --yellow: #ffcc00;
-}
-/* Define color variables for easier customization */
-:root {
-    --white: #ffffff;
-    --yellow: #ffcc00;
-}
-
 /* Navbar links */
 .nav-links {
     list-style: none;
@@ -113,7 +102,6 @@ header {
     transform-origin: bottom left;
 }
 
-
 /* Navbar Buttons */
 .book-tour-btn, .contact-us-btn {
     padding: 8px 15px;
@@ -141,6 +129,7 @@ header {
 .contact-us-btn:hover {
     /* No hover effect for Contact Us button */
 }
+
 /* Buttons in Gallery and Other Sections */
 .gallery-buttons, .video-buttons {
     text-align: center; /* Center-align buttons within the container */
@@ -161,7 +150,7 @@ header {
     position: relative; /* Required for the box-shadow push effect */
 }
 
-.gallery-buttons a:hover, .video-buttons a:hover  {
+.gallery-buttons a:hover, .video-buttons a:hover {
     background-color: var(--white);
     color: var(--navy-blue);
     transform: translateY(4px); /* Simulate the push effect */
@@ -173,7 +162,6 @@ header {
     transform: translateY(2px); /* Slightly more push effect when clicked */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow for the active state */
 }
-
 
 /* Burger Menu */
 .burger {
@@ -233,6 +221,7 @@ header {
 .slides img:nth-child(3) {
     animation-delay: 12s;
 }
+
 /* Motto Styling */
 .motto {
     position: absolute;
@@ -275,7 +264,6 @@ header {
     }
 }
 
-
 /* Section Styling */
 section {
     padding: 60px 20px;
@@ -287,7 +275,9 @@ section {
     background-color: var(--white);
     color: var(--navy-blue);
     padding: 60px 20px;
-}/* Core Values Cards */
+}
+
+/* Core Values Cards */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -317,164 +307,112 @@ section {
 
 .card h3 {
     margin: 15px;
-    font-size: 1.4rem; /* Larger font size */
+    font-size: 1.4rem; /* Larger font size for headings */
 }
 
 .card p {
-    margin: 0 15px 15px;
-    font-size: 1rem;
-    color: rgba(0, 0, 0, 0.7); /* Slightly lighter text color */
+    margin: 15px;
+    font-size: 1rem; /* Adjusted font size for paragraph text */
 }
 
+/* Hover effect on cards */
 .card:hover {
-    transform: scale(1.05) rotate(2deg); /* Scaling and tilt effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
-    filter: brightness(1.1); /* Border shine effect */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
-.card:hover img {
-    opacity: 0.8;
-}
-
-/* Adding a border shine effect */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px; /* Match rounded corners */
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s ease;
-    transform: scale(0);
-    pointer-events: none; /* Ensures it doesn’t block interactions */
-}
-
-.card:hover::before {
-    transform: scale(1);
-}
-
-
-
-.view-more {
-    display: block;
-    margin: 10px;
-    text-decoration: none;
-    color: var(--yellow);
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.view-more:hover {
+/* Contact Form */
+.contact-form {
+    background-color: var(--white);
     color: var(--navy-blue);
+    padding: 40px 20px;
+    border-radius: 15px; /* Rounded corners */
 }
 
-/* Virtual Tour and Gallery Styling */
-.video-container iframe {
+.contact-form input, .contact-form textarea {
     width: 100%;
-    height: 500px;
+    padding: 10px;
+    border: 1px solid var(--navy-blue);
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 15px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
     border: none;
+    background-color: var(--yellow);
+    color: var(--navy-blue);
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Footer Styling */
-.footer {
+footer {
     background-color: var(--navy-blue);
     color: var(--white);
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    padding: 20px 0;
 }
 
-/* Popup Form Styling */
-.popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
+footer p {
+    font-size: 0.9rem;
 }
 
-.popup-content {
-    background-color: var(--white);
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .navbar.active .nav-links {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .burger.active .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.active .line2 {
+        opacity: 0;
+    }
+
+    .burger.active .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
 }
 
-.popup-content .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
+@media (max-width: 480px) {
+    .school-name {
+        font-size: 1rem;
+    }
 
-.popup-content form {
-    display: flex;
-    flex-direction: column;
-}
-
-.popup-content input, .popup-content select, .popup-content button {
-    margin: 10px 0;
-}
-
-/* Social Icons Styling */
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-icons a {
-    color: var(--white);
-    font-size: 24px;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: var(--yellow);
-    transform: scale(1.1);
-
-    /* Styling for the Counter Section */
-.counters {
-    background-color: #f4f4f4;
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.counter-container {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.counter-box {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    width: 150px;
-}
-
-.counter {
-    font-size: 2.5rem;
-    color: #333;
-}
-
-.counter-box p {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    color: #666;
-}
-
+    .motto {
+        font-size: 1.8rem;
+    }
 }
