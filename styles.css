@@ -97,10 +97,48 @@ header {
     transform: scale(1.1); /* Ensures the scale effect is applied */
 }
 
+
 .nav-links a:hover::after {
     transform: scaleX(1); /* Expands the underline effect */
     transform-origin: bottom left;
 }
+
+/* updates for the active state of the nav bar links*/
+
+
+/* Active link styling */
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: bold; /* Optional: make the active link bold */
+}
+
+/* Visited link styling */
+.nav-links a:visited {
+    color: var(red); /* Adjust color to indicate visited links */
+}
+
+/* Underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1); /* Expands the underline effect */
+    transform-origin: bottom left;
+}
+
+
+
 
 /* Navbar Buttons */
 .book-tour-btn, .contact-us-btn {
@@ -365,6 +403,7 @@ footer {
 footer p {
     font-size: 0.9rem;
 }
+
 
 /* Responsive Styling */
 @media (max-width: 768px) {
