@@ -10,7 +10,7 @@ body {
     background-color: var(--background-color);
     color: var(--white);
     font-size: 16px;
-    scroll-behavior: smooth; /* Smooth scrolling */
+    scroll-behavior: smooth;
 }
 
 :root {
@@ -64,7 +64,7 @@ header {
 
 .nav-links li {
     margin: 0 10px;
-    position: relative; /* Needed for the underline effect */
+    position: relative;
 }
 
 /* Navbar link styling */
@@ -73,7 +73,7 @@ header {
     color: var(--white);
     font-size: 0.9rem;
     position: relative;
-    padding-bottom: 5px; /* Space for the underline */
+    padding-bottom: 5px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -91,54 +91,26 @@ header {
     transition: transform 0.3s ease;
 }
 
-/* Hover effect */
 .nav-links a:hover {
     color: var(--yellow);
-    transform: scale(1.1); /* Ensures the scale effect is applied */
-}
-
-
-.nav-links a:hover::after {
-    transform: scaleX(1); /* Expands the underline effect */
-    transform-origin: bottom left;
-}
-
-/* updates for the active state of the nav bar links*/
-
-
-/* Active link styling */
-.nav-links a.active {
-    color: var(--yellow);
-    font-weight: bold; /* Optional: make the active link bold */
-}
-
-/* Visited link styling */
-.nav-links a:visited {
-    color: var(red); /* Adjust color to indicate visited links */
-}
-
-/* Underline effect on hover */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--yellow);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
+    transform: scale(1.1);
 }
 
 .nav-links a:hover::after,
 .nav-links a.active::after {
-    transform: scaleX(1); /* Expands the underline effect */
+    transform: scaleX(1);
     transform-origin: bottom left;
 }
 
+/* Active link styling */
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: bold;
+}
 
-
+.nav-links a:visited {
+    color: var(--red); /* Adjust color to indicate visited links */
+}
 
 /* Navbar Buttons */
 .book-tour-btn, .contact-us-btn {
@@ -164,14 +136,10 @@ header {
     color: var(--white);
 }
 
-.contact-us-btn:hover {
-    /* No hover effect for Contact Us button */
-}
-
-/* Buttons in Gallery and Other Sections */
+/* Gallery and Video Buttons */
 .gallery-buttons, .video-buttons {
-    text-align: center; /* Center-align buttons within the container */
-    margin-top: 20px;   /* Add some spacing from the top */
+    text-align: center;
+    margin-top: 20px;
 }
 
 .gallery-buttons a, .video-buttons a {
@@ -184,21 +152,15 @@ header {
     border-radius: 10px;
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 10px; /* Add spacing between buttons */
-    position: relative; /* Required for the box-shadow push effect */
+    margin: 0 10px;
+    position: relative;
 }
 
 .gallery-buttons a:hover, .video-buttons a:hover {
     background-color: var(--white);
     color: var(--navy-blue);
-    transform: translateY(4px); /* Simulate the push effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to enhance the effect */
-}
-
-/* Optional: Button Active State for More Realistic Push Effect */
-.gallery-buttons a:active, .video-buttons a:active {
-    transform: translateY(2px); /* Slightly more push effect when clicked */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow for the active state */
+    transform: translateY(4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Burger Menu */
@@ -238,7 +200,6 @@ header {
     animation: fadeInOut 18s infinite;
 }
 
-/* Keyframes for Slideshow */
 @keyframes fadeInOut {
     0% { opacity: 0; }
     10% { opacity: 1; }
@@ -274,7 +235,6 @@ header {
     animation: mottoAnimation 12s ease-in-out infinite;
 }
 
-/* Improved Motto Animation */
 @keyframes mottoAnimation {
     0% {
         transform: translate(-50%, -50%) scale(0.8) rotate(-10deg);
@@ -308,7 +268,6 @@ section {
     scroll-margin-top: 60px;
 }
 
-/* Curriculum and Core Values Styling */
 .curriculum, .values, .about, .virtual-tour, .gallery, .location, .contacts {
     background-color: var(--white);
     color: var(--navy-blue);
@@ -320,20 +279,20 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Center cards within container */
+    justify-content: center;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.2); /* Glassmorphism background */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Glassmorphism border */
-    border-radius: 15px; /* Rounded corners */
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
     overflow: hidden;
-    width: calc(33.333% - 20px); /* Responsive card width */
-    max-width: 350px; /* Max width for larger screens */
+    width: calc(33.333% - 20px);
+    max-width: 350px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     position: relative;
-    backdrop-filter: blur(10px); /* Glassmorphism effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Default shadow */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -345,18 +304,17 @@ section {
 
 .card h3 {
     margin: 15px;
-    font-size: 1.4rem; /* Larger font size for headings */
+    font-size: 1.4rem;
 }
 
 .card p {
     margin: 15px;
-    font-size: 1rem; /* Adjusted font size for paragraph text */
+    font-size: 1rem;
 }
 
-/* Hover effect on cards */
 .card:hover {
-    transform: scale(1.05); /* Slight zoom effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Contact Form */
@@ -364,46 +322,68 @@ section {
     background-color: var(--white);
     color: var(--navy-blue);
     padding: 40px 20px;
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px;
 }
 
 .contact-form input, .contact-form textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid var(--navy-blue);
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
     margin-bottom: 15px;
 }
 
 .contact-form button {
     padding: 10px 20px;
-    border: none;
     background-color: var(--yellow);
+    border: none;
     color: var(--navy-blue);
-    border-radius: 5px; /* Rounded corners */
-    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
-    background-color: var(--white);
-    color: var(--navy-blue);
-    transform: scale(1.05); /* Slight zoom effect */
+    background-color: var(--navy-blue);
+    color: var(--yellow);
 }
 
-/* Footer Styling */
+/* Footer */
 footer {
     background-color: var(--navy-blue);
     color: var(--white);
     text-align: center;
-    padding: 20px 0;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
 }
 
-footer p {
-    font-size: 0.9rem;
+.footer-logo {
+    height: 40px;
+    margin-bottom: 10px;
 }
 
+.social-icons {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.social-icons li {
+    margin: 0 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--yellow);
+}
 
 /* Responsive Styling */
 @media (max-width: 768px) {
@@ -414,7 +394,13 @@ footer p {
 
     .nav-links {
         flex-direction: column;
+        align-items: flex-start;
         width: 100%;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 
     .nav-links li {
@@ -425,30 +411,14 @@ footer p {
         display: flex;
     }
 
-    .navbar.active .nav-links {
-        display: block;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .burger.active .line1 {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .burger.active .line2 {
-        opacity: 0;
-    }
-
-    .burger.active .line3 {
-        transform: rotate(45deg) translate(-5px, -6px);
+    .card {
+        width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 480px) {
-    .school-name {
-        font-size: 1rem;
+    .card {
+        width: 100%;
     }
 
     .motto {
