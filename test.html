@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="test.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
-<body>
+<body >
     <header>
         <nav class="navbar">
-            <div class="logo-container" id="logo">
+            <div class="logo-container">
                 <img src="placeholder-logo.png" alt="School Logo" class="logo">
                 <span class="school-name">School Name</span>
             </div>
-            <ul class="nav-links" id="links">
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#curriculum">Curriculum</a></li>
                 <li><a href="#values">Core Values</a></li>
@@ -24,11 +24,11 @@
                 <li><a href="#location">Location</a></li>
                 <li><a href="#contacts" class="contact-us-btn">Contact Us</a></li>
             </ul>
-            <a href="#book-tour" class="book-tour-btn" id="tour-button">Book a Tour</a>
-            <div class="burger" id="hamburger">
-                <div class="line1" ></div>
-                <div class="line2" ></div>
-                <div class="line3" ></div>
+            <a href="#book-tour" class="book-tour-btn">Book a Tour</a>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
             </div>
         </nav>
     </header>
@@ -170,6 +170,36 @@
                 bookTourPopup.style.display = 'none';
             }
         });
+
+        
+        // Navbar active link
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section'); // Sections you want to track
+            const navLinks = document.querySelectorAll('.nav-links a'); // Nav links
+
+            function updateNav() {
+                let currentSection = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (pageYOffset >= sectionTop - 50 && pageYOffset < sectionTop + sectionHeight - 50) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateNav);
+            updateNav(); // Call on page load to set the initial state
+        });
     </script>
 </body>
+<footer>Copyright &copy; school 2024</footer>
 </html>

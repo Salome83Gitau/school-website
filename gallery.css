@@ -1,0 +1,341 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gallery-container {
+    width: 80%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px 0;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.gallery-item {
+    flex: 0 0 calc(33.33% - 20px);
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    height: auto;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid #007acc;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 122, 204, 0.5);
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px); /* Glassmorphism effect */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 5px solid #ff9900;
+    border-radius: 10px;
+}
+
+#close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 100%;
+    }
+}
+
+
+:root {
+    --navy-blue: #001f3f;
+    --yellow: #ffcc00;
+    --white: #ffffff;
+    --background-color: #f4f4f4;
+}
+
+/* Header and Navbar Styling */
+header {
+    width: 100%;
+    background-color: var(--navy-blue);
+    color: var(--white);
+    padding: 5px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.school-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--yellow);
+}
+
+
+/* Navbar links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 10px;
+    position: relative;
+}
+
+/* Navbar link styling */
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    transform: scale(1.1);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Active link styling */
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+.nav-links a:visited {
+    color: var(--red); /* Adjust color to indicate visited links */
+}
+
+
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+.burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .line2 {
+    opacity: 0;
+}
+
+.burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* Sections Styling */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+
+/* Navbar Buttons */
+.book-tour-btn {
+    padding: 8px 15px;
+    border: 2px solid var(--yellow);
+    margin-right: 20px;
+    background-color: var(--yellow);
+    color: var(--navy-blue);
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.book-tour-btn:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: scale(1.1);
+}
+
+.contact-us-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        text-align: left;
+        background-color: var(--navy-blue);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 10px;
+}
+

@@ -6,7 +6,7 @@
     font-family: 'Arial', sans-serif;
 }
 
-body {
+ body {
     background-color: var(--background-color);
     color: var(--white);
     font-size: 16px;
@@ -28,17 +28,15 @@ header {
     padding: 5px 0;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .logo-container {
@@ -47,33 +45,87 @@ header {
 }
 
 .logo {
-    width: 50px;
-    height: auto;
+    height: 40px;
     margin-right: 10px;
 }
 
 .school-name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
+    color: var(--yellow);
 }
 
+
+/* Navbar links */
 .nav-links {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 15px;
 }
 
+.nav-links li {
+    margin: 0 10px;
+    position: relative;
+}
+
+/* Navbar link styling */
 .nav-links a {
-    color: var(--white);
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
+    color: var(--white);
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--yellow);
+    transform: scale(1.1);
 }
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Active link styling */
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+.nav-links a:visited {
+    color: var(--red); /* Adjust color to indicate visited links */
+}
+
+
 
 .burger {
     display: none;
@@ -100,19 +152,6 @@ header {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-.book-tour-btn {
-    background-color: var(--yellow);
-    color: var(--navy-blue);
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.book-tour-btn:hover {
-    background-color: #e6b800;
-}
 
 /* Sections Styling */
 section {
@@ -120,17 +159,50 @@ section {
     text-align: center;
 }
 
-.home {
-    padding-top: 60px;
-}
 
+
+/* Slideshow Styling */
 .slideshow {
     position: relative;
-    width: 100%;
-    max-height: 500px;
+    height: 100vh;
     overflow: hidden;
 }
 
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.slides img {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    opacity: 0;
+    animation: fadeInOut 18s infinite;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    30% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Image Timing */
+.slides img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slides img:nth-child(2) {
+    animation-delay: 6s;
+}
+
+.slides img:nth-child(3) {
+    animation-delay: 12s;
+}
 .slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -142,16 +214,45 @@ section {
     max-height: 500px;
 }
 
+/* Motto Styling */
 .motto {
     position: absolute;
-    bottom: 20px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: var(--white);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.5rem;
+    transform: translate(-50%, -50%);
+    color: var(--yellow);
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    animation: mottoAnimation 12s ease-in-out infinite;
+}
+
+@keyframes mottoAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8) rotate(-10deg);
+        opacity: 0;
+    }
+    20% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+        opacity: 1;
+    }
+    40% {
+        transform: translate(-50%, -50%) scale(1) rotate(10deg);
+        opacity: 1;
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+        opacity: 1;
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(1) rotate(-10deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+        opacity: 0;
+    }
 }
 
 /* Curriculum Section */
@@ -242,28 +343,57 @@ section {
     color: var(--white);
 }
 
-.gallery-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+/* Navbar Buttons */
+.book-tour-btn {
+    padding: 8px 15px;
+    border: 2px solid var(--yellow);
+    margin-right: 20px;
+    background-color: var(--yellow);
+    color: var(--navy-blue);
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.book-tour-btn:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: scale(1.1);
+}
+
+.contact-us-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--white);
+}
+
+/* Gallery and Video Buttons */
+.gallery-buttons, .video-buttons {
+    text-align: center;
     margin-top: 20px;
 }
 
-.photos-btn,
-.videos-btn {
+.gallery-buttons a, .video-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--yellow);
     background-color: var(--yellow);
     color: var(--navy-blue);
-    padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 10px;
+    position: relative;
 }
 
-.photos-btn:hover,
-.videos-btn:hover {
-    background-color: #e6b800;
+.gallery-buttons a:hover, .video-buttons a:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: translateY(4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 /* Location Section */
 .location {
     background-color: var(--background-color);
@@ -406,4 +536,20 @@ section {
     }
 
     
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 10px;
 }

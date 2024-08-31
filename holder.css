@@ -1,0 +1,219 @@
+
+:root {
+    --navy-blue: #001f3f;
+    --yellow: #ffcc00;
+    --white: #ffffff;
+    --background-color: #f4f4f4;
+}
+
+/* Header and Navbar Styling */
+header {
+    width: 100%;
+    background-color: var(--navy-blue);
+    color: var(--white);
+    padding: 5px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.school-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--yellow);
+}
+
+
+/* Navbar links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 10px;
+    position: relative;
+}
+
+/* Navbar link styling */
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Underline effect on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--yellow);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    transform: scale(1.1);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Active link styling */
+.nav-links a.active {
+    color: var(--yellow);
+    font-weight: bold;
+}
+
+.nav-links a:visited {
+    color: var(--red); /* Adjust color to indicate visited links */
+}
+
+
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 5px;
+    transition: all 0.3s;
+}
+
+.burger.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .line2 {
+    opacity: 0;
+}
+
+.burger.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* Sections Styling */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+
+/* Navbar Buttons */
+.book-tour-btn {
+    padding: 8px 15px;
+    border: 2px solid var(--yellow);
+    margin-right: 20px;
+    background-color: var(--yellow);
+    color: var(--navy-blue);
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.book-tour-btn:hover {
+    background-color: var(--white);
+    color: var(--navy-blue);
+    transform: scale(1.1);
+}
+
+.contact-us-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--white);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        text-align: left;
+        background-color: var(--navy-blue);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--navy-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 100;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 10px;
+}
