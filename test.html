@@ -82,6 +82,27 @@
     <section id="about" class="about" data-aos="fade-up">
         <h2>About Us</h2>
         <p>Learn more about our school and our mission.</p>
+        <div class="counter-section">
+            <div class="counter-box">
+                <h3 class="counter" data-target="25">0</h3>
+                <p>Years of Excellence</p>
+            </div>
+            <div class="counter-box">
+                <h3 class="counter" data-target="1500">0</h3>
+                <p>Total Students</p>
+            </div>
+            <div class="counter-box">
+                <h3 class="counter" data-target="1200">0</h3>
+                <p>Graduates</p>
+            </div>
+            <div class="counter-box">
+                <h3 class="counter" data-target="100">0</h3>
+                <p>Teachers</p>
+            </div>
+        </div>
+        
+        
+        
     </section>
 
     <section id="virtual-tour" class="virtual-tour" data-aos="fade-up">
@@ -123,13 +144,13 @@
             <h2>Book a Tour</h2>
             <form id="book-tour-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="Name" required>
                 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required placeholder="Email">
                 
                 <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone" required placeholder="Phone">
                 
                 <label for="date">Preferred Date:</label>
                 <input type="date" id="date" name="date" required>
@@ -158,7 +179,7 @@
         const closePopup = document.querySelector('.popup .close');
 
         bookTourBtn.addEventListener('click', () => {
-            bookTourPopup.style.display = 'block';
+            bookTourPopup.style.display = 'flex';
         });
 
         closePopup.addEventListener('click', () => {
@@ -198,7 +219,52 @@
 
             window.addEventListener('scroll', updateNav);
             updateNav(); // Call on page load to set the initial state
-        });
+        });// Counter animation logic
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+const countUp = (counter) => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / speed;
+
+    if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(() => countUp(counter), 20);
+    } else {
+        counter.innerText = target;
+    }
+};
+
+const resetCounter = (counter) => {
+    counter.innerText = '0';
+};
+
+const section = document.querySelector('.counter-section');
+
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            section.classList.add('visible');
+            counters.forEach(counter => {
+                resetCounter(counter);
+                countUp(counter);
+            });
+        } else {
+            section.classList.remove('visible');
+            counters.forEach(counter => resetCounter(counter));
+        }
+    });
+}, options);
+
+observer.observe(section);
+
     </script>
 </body>
 <footer>Copyright &copy; school 2024</footer>

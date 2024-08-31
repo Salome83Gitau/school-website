@@ -77,7 +77,6 @@ header {
     padding-bottom: 5px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
-
 /* Underline effect on hover */
 .nav-links a::after {
     content: '';
@@ -86,11 +85,12 @@ header {
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: var(--yellow);
+    background: var(--yellow); /* Yellow underline on hover */
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
 }
+
 .nav-links a::before {
     content: '';
     position: absolute;
@@ -98,20 +98,20 @@ header {
     bottom: 0;
     width: 100%;
     height: 2px;
-    background: var(--yellow);
+    background: white; /* White underline for active state */
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
 }
 
+/* Hover effect */
 .nav-links a:hover {
-    color: var(--yellow);
+    color: var(--yellow); /* Yellow text on hover */
     transform: scale(1.1);
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    transform: scaleX(1);
+.nav-links a:hover::after {
+    transform: scaleX(1); /* Show yellow underline */
     transform-origin: bottom left;
 }
 
@@ -121,10 +121,15 @@ header {
     font-weight: bold;
 }
 
+.nav-links a.active::before {
+    transform: scaleX(1); /* Show white underline for active link */
+    transform-origin: bottom left;
+}
+
+/* Visited link styling */
 .nav-links a:visited {
     color: var(--red); /* Adjust color to indicate visited links */
 }
-
 
 
 .burger {
@@ -468,12 +473,14 @@ section {
 
 .popup-content h2 {
     margin-bottom: 20px;
+    color: var(--navy-blue);
 }
 
 .popup-content label {
     display: block;
     text-align: left;
     margin: 10px 0 5px;
+    color: var(--navy-blue);
 }
 
 .popup-content input {
@@ -492,19 +499,29 @@ section {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 120px;
 }
 
 .popup-content button:hover {
-    background-color: #e6b800;
+    background-color: var(--navy-blue);
+    color: var(--white);
+    transform: translateY(4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 .close {
-    position: absolute;
-    top: 10px;
+    position: relative;
+    float: right;
+    top: 1px;
     right: 15px;
-    font-size: 1.5rem;
+    font-size: 3rem;
     cursor: pointer;
     color: var(--navy-blue);
+}
+
+/* Ensure no extra content is added */
+.close::before,
+.close::after {
+    content: ''; /* Make sure these are empty */
 }
 
 /* Responsive Design */
@@ -552,4 +569,73 @@ footer {
 .footer-logo {
     height: 40px;
     margin-bottom: 10px;
+}
+/* Base Styles */
+
+.counter-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.counter-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: var(--yellow);
+    box-shadow: rgb(174, 174, 111);
+    width: 200px;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+    transform: translateY(100px); /* Start out of view */
+    opacity: 0;
+}
+
+.counter-box h3 {
+    font-size: 2rem;
+    margin: 0;
+    background: -webkit-linear-gradient(45deg, #ffdc00, #ffffff); /* Yellow to White Gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.counter-box p {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    color:var(--navy-blue); /* Yellow Text */
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animate the box into view */
+.counter-section.visible .counter-box {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.counter-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 6px 35px rgba(255, 255, 255, 0.3);
+}
+
+.counter-box:hover h3 {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .counter-section {
+        flex-direction: column;
+        padding: 60px 0;
+    }
+
+    .counter-box {
+        margin-bottom: 20px;
+        width: 90%;
+    }
 }
