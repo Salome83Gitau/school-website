@@ -585,7 +585,7 @@ footer {
     text-align: center;
     padding: 20px;
     border-radius: 15px;
-    background: var(--yellow);
+    /* background: var(--yellow); */
     box-shadow: rgb(174, 174, 111);
     width: 200px;
     transition: transform 1s ease-out, opacity 1s ease-out;
@@ -606,7 +606,7 @@ footer {
 .counter-box p {
     font-size: 0.9rem;
     margin-top: 15px;
-    color:var(--navy-blue); /* Yellow Text */
+    color: var(--white); /* Yellow Text */
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
