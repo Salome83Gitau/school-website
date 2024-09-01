@@ -594,7 +594,7 @@ footer {
 }
 
 .counter-box h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 0;
     background: -webkit-linear-gradient(45deg, #ffdc00, #ffffff); /* Yellow to White Gradient */
     -webkit-background-clip: text;
