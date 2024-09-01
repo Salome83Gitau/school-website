@@ -108,6 +108,7 @@ header {
 .nav-links a.active {
     color: var(--yellow);
     font-weight: bold;
+    background: var(--white);
 }
 
 .nav-links a:visited {
