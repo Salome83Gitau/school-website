@@ -662,3 +662,43 @@ footer {
         width: 90%;
     }
 }
+css
+Copy code
+/* Contact Us section styles */
+.contacts {
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.contacts h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+    color: #333;
+}
+
+.contacts p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-details {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-details p {
+    margin: 5px 0;
+}
+
+.contact-details a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
