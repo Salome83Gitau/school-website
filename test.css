@@ -662,12 +662,12 @@ footer {
         width: 90%;
     }
 }
-css
-Copy code
+
 /* Contact Us section styles */
+
+
 .contacts {
     padding: 20px;
-    background-color: #f9f9f9;
     text-align: center;
 }
 
@@ -700,5 +700,13 @@ Copy code
 
 .contact-details a:hover {
     text-decoration: underline;
+}
+/* alighn the contact us items in two columns */
+.contact-us{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto, auto;
+    grid-template-areas: "contact-details  contact-details";
+    gap: 20px;
 }
 
