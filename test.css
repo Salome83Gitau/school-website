@@ -106,7 +106,7 @@ header {
 
 /* Hover effect */
 .nav-links a:hover {
-    color: var(--yellow); /* Yellow text on hover */
+    color: var(--yellow) !important; /* Yellow text on hover */
     transform: scale(1.1);
 }
 
