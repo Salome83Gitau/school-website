@@ -102,6 +102,26 @@ body {
     z-index: 1001;
 }
 
+
+/* Navigation arrows */
+.prev-arrow, .next-arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
+}
+
+.prev-arrow {
+    left: 10px;
+}
+
+.next-arrow {
+    right: 10px;
+}
+
 body::before {
     content: '';
     position: absolute;
