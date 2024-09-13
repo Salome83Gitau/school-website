@@ -65,25 +65,25 @@
         <h2>Our Core Values</h2>
         <div class="card-container">
             <div class="card" data-aos="fade-up">
-                <img src="placeholder-sports.jpg" alt="Sports">
+                <img src="joey-banks-YApiWyp0lqo-unsplash.jpg" alt="Sports">
                 <h3>Sports and Talent</h3>
                 <p>Fostering Athletic and Artistic Skills.</p>
                 <a href="#more-sports" class="view-more">View More</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <img src="placeholder-spiritual.jpg" alt="Spiritual Well-being">
+                <img src="pexels-craig-adderley-2566121 copy.jpg" alt="Spiritual Well-being">
                 <h3>Spiritual Well-being</h3>
                 <p>Promoting Spiritual Growth and Reflection.</p>
                 <a href="#more-spiritual" class="view-more">View More</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <img src="placeholder-arts.jpg" alt="Performing Arts">
+                <img src="pexels-craig-adderley-2566121.jpg" alt="Performing Arts">
                 <h3>Performing Arts</h3>
                 <p>Encouraging Artistic Expression.</p>
                 <a href="#more-arts" class="view-more">View More</a>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <img src="placeholder-digital.jpg" alt="Digital Literacy">
+                <img src="pexels-laura-stanley-2519217.jpg" alt="Digital Literacy">
                 <h3>Digital Literacy</h3>
                 <p>Equipping Students with Digital Skills.</p>
                 <a href="#more-digital" class="view-more">View More</a>
@@ -296,6 +296,19 @@ const observer = new IntersectionObserver((entries) => {
 }, options);
 
 observer.observe(section);
+
+ // Function to close the announcement
+ function closeAnnouncement() {
+        const announcement = document.querySelector('.announcement');
+        announcement.style.opacity = 0;
+        announcement.style.transform = 'scaleX(0)';
+        setTimeout(() => {
+            announcement.style.display = 'none'; // Hide the announcement after animation
+        }, 1000); // Match this duration with the animation duration
+    }
+
+    // Attach the close function to the close button
+    document.querySelector('.close-btn').addEventListener('click', closeAnnouncement);
 
     </script>
 </body>
