@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevArrow = document.querySelector('.prev-arrow');
     const nextArrow = document.querySelector('.next-arrow');
     let currentIndex = -1;
+    let debounceTimer;
+
+    // Debounce function to prevent rapid event firing
+    function debounce(func, delay) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(func, delay);
+    }
 
     // Adding scroll animation
     const observer = new IntersectionObserver((entries) => {
@@ -44,16 +51,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Keyboard accessibility
+    // Keyboard accessibility with debounce
     document.addEventListener('keydown', function (e) {
         if (lightbox.style.display === 'flex') {
-            if (e.key === 'ArrowLeft') {
-                showPrevImage();
-            } else if (e.key === 'ArrowRight') {
-                showNextImage();
-            } else if (e.key === 'Escape') {
-                lightbox.style.display = 'none';
-            }
+            debounce(() => {
+                if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'Escape') {
+                    lightbox.style.display = 'none';
+                }
+            }, 200); // 200ms debounce delay
         }
     });
 
@@ -80,17 +89,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function preloadAdjacentImages(index) {
         const nextIndex = (index === galleryItems.length - 1) ? 0 : index + 1;
         const prevIndex = (index === 0) ? galleryItems.length - 1 : index - 1;
+        const nextNextIndex = (nextIndex === galleryItems.length - 1) ? 0 : nextIndex + 1;
+        const prevPrevIndex = (prevIndex === 0) ? galleryItems.length - 1 : prevIndex - 1;
 
         const nextImg = new Image();
         nextImg.src = galleryItems[nextIndex].querySelector('img').src;
 
         const prevImg = new Image();
         prevImg.src = galleryItems[prevIndex].querySelector('img').src;
+
+        const nextNextImg = new Image();
+        nextNextImg.src = galleryItems[nextNextIndex].querySelector('img').src;
+
+        const prevPrevImg = new Image();
+        prevPrevImg.src = galleryItems[prevPrevIndex].querySelector('img').src;
     }
 
-    // Add click functionality for arrows
-    prevArrow.addEventListener('click', showPrevImage);
-    nextArrow.addEventListener('click', showNextImage);
+    // Add click functionality for arrows with debounce
+    prevArrow.addEventListener('click', () => debounce(showPrevImage, 200));
+    nextArrow.addEventListener('click', () => debounce(showNextImage, 200));
 
     // Burger menu toggle
     const burger = document.querySelector('.burger');
