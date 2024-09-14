@@ -42,6 +42,7 @@ header {
 .logo-container {
     display: flex;
     align-items: center;
+    padding-left: 80px;
 }
 
 .logo {
@@ -303,7 +304,7 @@ section {
 .card h3 {
     margin: 10px 0;
 }
-
+/* 
 .view-more {
     color: var(--yellow);
     text-decoration: none;
@@ -314,7 +315,7 @@ section {
 
 .view-more:hover {
     text-decoration: underline;
-}
+} */
 
 /* About Section */
 .about {
